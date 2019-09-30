@@ -120,8 +120,4 @@ func main() {
 		fmt.Println(hash)
 	}
 
-	//password := flag.Arg(0)
-	//hash, _ := hashPassword(password)
-	//fmt.Println(hash)
-
 }

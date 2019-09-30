@@ -6,11 +6,11 @@ It can be used to generate single or multiple hashes for usage in password datab
 
 ## Install
 
-genhash is written in Go and has no dependencies. You can install the tool with your go installation using following command:
+genhash is written in Go. You can install the tool with your go installation using following command:
 
-'
-' go get -u github.com/vschwaberow/genhash
-'
+>
+> go get -u github.com/vschwaberow/genhash
+>
 
 Or you've got the choice to download a binary distribution package under Releases.
 
@@ -18,15 +18,15 @@ Or you've got the choice to download a binary distribution package under Release
 
 You can either provide a text string as argument, to be hashed by one of the program supported hash algorithms.
 
-'
-' genhash -a <HASH_ALGORITHM> <text string>
-'
+>
+> genhash -a <HASH_ALGORITHM> <text string>
+>
 
 Or you can provide a list of text strings to be hashed over the stdin
 
-'
-' cat <LIST_OF_STRINGS> | genhash -a <HASH_ALGORITHM>
-'
+>
+> cat <LIST_OF_STRINGS> | genhash -a <HASH_ALGORITHM>
+>
 
 Supported hash algorithms are:
 
