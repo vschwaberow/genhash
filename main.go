@@ -29,6 +29,10 @@ func callHashFactory(input string, hashFactory func() hash.Hash) string {
 
 func hashPassword(password string) (string, error) {
 	switch algoFlag {
+	case "LANMAN":
+		bytes := lanMan(password)
+		s := fmt.Sprintf("%x", bytes)
+		return s, nil
 	case "BCRYPT":
 		bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
 		return string(bytes), err
@@ -68,39 +72,11 @@ func hashPassword(password string) (string, error) {
 
 func main() {
 
-	algo := flag.String("a", "", "Provide algorithm md4 md5 bcrypt sha1 sha2-224 sha2-256 sha2-512 sha3-224 sha3-256 sha3-512")
+	algo := flag.String("a", "", "Provide algorithm lanman md4 md5 bcrypt sha1 sha2-224 sha2-256 sha2-512 sha3-224 sha3-256 sha3-512")
 	flag.Parse()
 
 	value := *algo
-	value = strings.ToUpper(value)
-
-	switch value {
-	case "MD4":
-		algoFlag = "MD4"
-	case "MD5":
-		algoFlag = "MD5"
-	case "BCRYPT":
-		algoFlag = "BCRYPT"
-	case "SHA1":
-		algoFlag = "SHA1"
-	case "SHA2-224":
-		algoFlag = "SHA2-224"
-	case "SHA2-256":
-		algoFlag = "SHA2-256"
-	case "SHA2-512":
-		algoFlag = "SHA2-512"
-	case "SHA3-224":
-		algoFlag = "SHA3-224"
-	case "SHA3-256":
-		algoFlag = "SHA3-256"
-	case "SHA3-512":
-		algoFlag = "SHA3-512"
-
-	default:
-		fmt.Println("No compatible algorithm.")
-		return
-
-	}
+	algoFlag = strings.ToUpper(value)
 
 	if flag.Arg(0) == "" {
 		sc := bufio.NewScanner(os.Stdin)
