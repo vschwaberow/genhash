@@ -31,6 +31,7 @@ Or you can provide a list of text strings to be hashed over the stdin
 Supported hash algorithms are:
 
 * Lanmanager
+* NTLM / NTHash (UTF16 Little Endian MD4)
 * md4
 * md5 
 * bcrypt
