@@ -32,7 +32,6 @@ func lanMan(Password string) [16]byte {
 	var lmpass [14]byte
 	var key [16]byte
 	var hash [16]byte
-	// var nonce [8]byte
 
 	copy(lmpass[:14], []byte(strings.ToUpper(Password)))
 

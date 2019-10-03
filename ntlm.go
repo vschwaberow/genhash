@@ -6,9 +6,6 @@ import (
 	"golang.org/x/crypto/md4"
 )
 
-// 6266636233373032333531323534336164666232653762363436343633313637
-// BFCB37023512543ADFB2E7B646463167
-
 func nthash(Password string) (string, error) {
 
 	b := utf16le(Password)
