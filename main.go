@@ -29,6 +29,10 @@ func callHashFactory(input string, hashFactory func() hash.Hash) string {
 
 func hashPassword(password string) (string, error) {
 	switch algoFlag {
+	case "NTLM":
+		bytes, _ := nthash(password)
+		s := fmt.Sprintf("%s", bytes)
+		return s, nil
 	case "LANMAN":
 		bytes := lanMan(password)
 		s := fmt.Sprintf("%x", bytes)
@@ -72,7 +76,7 @@ func hashPassword(password string) (string, error) {
 
 func main() {
 
-	algo := flag.String("a", "", "Provide algorithm lanman md4 md5 bcrypt sha1 sha2-224 sha2-256 sha2-512 sha3-224 sha3-256 sha3-512")
+	algo := flag.String("a", "", "Provide algorithm lanman ntlm md4 md5 bcrypt sha1 sha2-224 sha2-256 sha2-512 sha3-224 sha3-256 sha3-512")
 	flag.Parse()
 
 	value := *algo
