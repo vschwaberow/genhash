@@ -13,6 +13,7 @@ import (
 	"os"
 	"strings"
 
+	uuid "github.com/satori/go.uuid"
 	"golang.org/x/crypto/bcrypt"
 	"golang.org/x/crypto/md4"
 	"golang.org/x/crypto/sha3"
@@ -67,6 +68,15 @@ func hashPassword(password string) (string, error) {
 	case "SHA3-512":
 		bytes := callHashFactory(password, sha3.New512)
 		return string(bytes), nil
+	case "UUID1":
+		u1 := uuid.Must(uuid.NewV1())
+		u2 := fmt.Sprintf("%s", u1)
+		return string(u2), nil
+	case "UUID4":
+		u1 := uuid.Must(uuid.NewV4())
+		u2 := fmt.Sprintf("%s", u1)
+		return string(u2), nil
+
 	default:
 		return "", nil
 
@@ -76,13 +86,23 @@ func hashPassword(password string) (string, error) {
 
 func main() {
 
-	algo := flag.String("a", "", "Provide algorithm lanman ntlm md4 md5 bcrypt sha1 sha2-224 sha2-256 sha2-512 sha3-224 sha3-256 sha3-512")
+	algo := flag.String("a", "", "Provide algorithm lanman ntlm md4 md5 bcrypt sha1 sha2-224 sha2-256 sha2-512 sha3-224 sha3-256 sha3-512 uuid1 uuid4")
 	flag.Parse()
 
 	value := *algo
 	algoFlag = strings.ToUpper(value)
 
 	if flag.Arg(0) == "" {
+		switch algoFlag {
+		case "UUID1":
+			u1 := uuid.Must(uuid.NewV1())
+			fmt.Printf("%s\n", u1)
+			return
+		case "UUID4":
+			u1 := uuid.Must(uuid.NewV4())
+			fmt.Printf("%s\n", u1)
+			return
+		}
 		sc := bufio.NewScanner(os.Stdin)
 
 		for sc.Scan() {
@@ -95,9 +115,12 @@ func main() {
 			fmt.Println("failed to read input.")
 		}
 	} else {
-		password := flag.Arg(0)
-		hash, _ := hashPassword(password)
-		fmt.Println(hash)
+
+		if flag.Arg(0) != "" {
+			password := flag.Arg(0)
+			hash, _ := hashPassword(password)
+			fmt.Println(hash)
+		}
 	}
 
 }

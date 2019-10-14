@@ -38,3 +38,5 @@ Supported hash algorithms are:
 * sha1
 * sha2-224, sha2-256, sha2-512
 * sha3-224, sha3-256, sha3-512
+* UUID Version 1
+* UUID Version 4
