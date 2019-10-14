@@ -78,6 +78,8 @@ func hashPassword(password string) (string, error) {
 		return string(u2), nil
 
 	default:
+		fmt.Printf("You provided an invalid flag for the algorithm.\n")
+		os.Exit(1)
 		return "", nil
 
 	}
