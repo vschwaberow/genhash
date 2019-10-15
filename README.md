@@ -35,6 +35,7 @@ Supported hash algorithms are:
 * md4
 * md5 
 * bcrypt
+* ripemd160
 * sha1
 * sha2-224, sha2-256, sha2-512
 * sha3-224, sha3-256, sha3-512
