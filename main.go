@@ -16,6 +16,7 @@ import (
 	uuid "github.com/satori/go.uuid"
 	"golang.org/x/crypto/bcrypt"
 	"golang.org/x/crypto/md4"
+	"golang.org/x/crypto/ripemd160"
 	"golang.org/x/crypto/sha3"
 )
 
@@ -46,6 +47,9 @@ func hashPassword(password string) (string, error) {
 		return string(bytes), nil
 	case "MD5":
 		bytes := callHashFactory(password, md5.New)
+		return string(bytes), nil
+	case "RIPEMD160":
+		bytes := callHashFactory(password, ripemd160.New)
 		return string(bytes), nil
 	case "SHA1":
 		bytes := callHashFactory(password, sha1.New)
@@ -88,7 +92,7 @@ func hashPassword(password string) (string, error) {
 
 func main() {
 
-	algo := flag.String("a", "", "Provide algorithm lanman ntlm md4 md5 bcrypt sha1 sha2-224 sha2-256 sha2-512 sha3-224 sha3-256 sha3-512 uuid1 uuid4")
+	algo := flag.String("a", "", "Provide algorithm lanman ntlm md4 md5 bcrypt ripemd160 sha1 sha2-224 sha2-256 sha2-512 sha3-224 sha3-256 sha3-512 uuid1 uuid4")
 	flag.Parse()
 
 	value := *algo
