@@ -19,14 +19,16 @@ Or you've got the choice to download a binary distribution package under Release
 You can either provide a text string as argument, to be hashed by one of the program supported hash algorithms.
 
 >
-> genhash -a <HASH_ALGORITHM> <text string>
+> genhash <HASH_ALGORITHM> <text string>
 >
 
 Or you can provide a list of text strings to be hashed over the stdin
 
 >
-> cat <LIST_OF_STRINGS> | genhash -a <HASH_ALGORITHM>
+> cat <LIST_OF_STRINGS> | genhash <HASH_ALGORITHM> -s
 >
+
+You can list all algorithms over the help function.
 
 Supported hash algorithms are:
 
