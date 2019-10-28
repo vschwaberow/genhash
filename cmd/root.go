@@ -36,6 +36,7 @@ func init() {
 	rootCmd.AddCommand(sha3512Cmd)
 	rootCmd.AddCommand(uuid1Cmd)
 	rootCmd.AddCommand(uuid4Cmd)
+	rootCmd.AddCommand(randomCmd)
 
 }
 

@@ -4,10 +4,25 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/spf13/cobra"
 	"github.com/vschwaberow/genhash/pkg"
 )
+
+func randomGenerate(cmd *cobra.Command, args []string) {
+	if Algo == true {
+		fmt.Println("Sorry. The stdin flag has not action in combination with random bytes generation.")
+	} else {
+		if len(args) > 0 {
+			bsize, _ := strconv.Atoi(args[0])
+			rndbytes, rndsize := pkg.GenerateRandomBytes(bsize)
+			fmt.Println("Here are random values of", rndsize, "bytes length")
+			fmt.Println(rndbytes)
+			fmt.Printf("%x\n", rndbytes)
+		}
+	}
+}
 
 func output(password string) {
 	hash, _ := pkg.HashPassword(password)
@@ -112,4 +127,9 @@ var uuid4Cmd = &cobra.Command{
 	Use:   "uuid4",
 	Short: "Generate UUID-4 random string",
 	Run:   hashGenerate,
+}
+var randomCmd = &cobra.Command{
+	Use:   "rand",
+	Short: "Generate random bytes of size provided",
+	Run:   randomGenerate,
 }
