@@ -10,6 +10,7 @@ import (
 	"io"
 	"os"
 
+	"github.com/jzelinskie/whirlpool"
 	uuid "github.com/satori/go.uuid"
 	"golang.org/x/crypto/bcrypt"
 	"golang.org/x/crypto/md4"
@@ -76,6 +77,12 @@ func HashPassword(password string) (string, error) {
 		u1 := uuid.Must(uuid.NewV4(), nil)
 		u2 := fmt.Sprintf("%s", u1)
 		return string(u2), nil
+	case "whirlpool":
+		w := whirlpool.New()
+		text := []byte(password)
+		w.Write(text)
+		s := fmt.Sprintf("%x", w.Sum(nil))
+		return s, nil
 
 	default:
 		fmt.Printf("You provided an invalid flag for the algorithm.\n")

@@ -37,7 +37,7 @@ func init() {
 	rootCmd.AddCommand(uuid1Cmd)
 	rootCmd.AddCommand(uuid4Cmd)
 	rootCmd.AddCommand(randomCmd)
-
+	rootCmd.AddCommand(whirlCmd)
 }
 
 func Execute() {

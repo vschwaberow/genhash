@@ -139,3 +139,8 @@ var randomCmd = &cobra.Command{
 	Short: "Generate random bytes of size provided",
 	Run:   randomGenerate,
 }
+var whirlCmd = &cobra.Command{
+	Use:   "whirlpool",
+	Short: "Generate Whirlpool hash",
+	Run:   hashGenerate,
+}
