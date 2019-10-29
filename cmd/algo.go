@@ -144,3 +144,8 @@ var whirlCmd = &cobra.Command{
 	Short: "Generate Whirlpool hash",
 	Run:   hashGenerate,
 }
+var argon2Cmd = &cobra.Command{
+	Use:   "argon2",
+	Short: "Generate Argon2 hash",
+	Run:   hashGenerate,
+}

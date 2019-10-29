@@ -11,6 +11,7 @@ import (
 	"os"
 
 	"github.com/jzelinskie/whirlpool"
+	"github.com/raja/argon2pw"
 	uuid "github.com/satori/go.uuid"
 	"golang.org/x/crypto/bcrypt"
 	"golang.org/x/crypto/md4"
@@ -28,6 +29,13 @@ func callHashFactory(input string, hashFactory func() hash.Hash) string {
 }
 func HashPassword(password string) (string, error) {
 	switch AlgoFlag {
+	case "argon2":
+		h, err := argon2pw.GenerateSaltedHash(password)
+		if err != nil {
+			panic(err)
+		}
+		s := fmt.Sprintf("%x", h)
+		return s, nil
 	case "ntlm":
 		bytes, _ := nthash(password)
 		s := fmt.Sprintf("%s", bytes)

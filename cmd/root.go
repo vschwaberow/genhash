@@ -38,6 +38,7 @@ func init() {
 	rootCmd.AddCommand(uuid4Cmd)
 	rootCmd.AddCommand(randomCmd)
 	rootCmd.AddCommand(whirlCmd)
+	rootCmd.AddCommand(argon2Cmd)
 }
 
 func Execute() {
