@@ -34,7 +34,7 @@ func HashPassword(password string) (string, error) {
 		if err != nil {
 			panic(err)
 		}
-		s := fmt.Sprintf("%x", h)
+		s := fmt.Sprintf("%s", h)
 		return s, nil
 	case "ntlm":
 		bytes, _ := nthash(password)
