@@ -29,6 +29,12 @@ func output(password string) {
 	fmt.Printf("%s\n", hash)
 }
 
+func uuidGenerate(cmd *cobra.Command, args []string) {
+	pkg.AlgoFlag = cmd.Name()
+	hash, _ := pkg.HashPassword("")
+	fmt.Println(hash)
+}
+
 func hashGenerate(cmd *cobra.Command, args []string) {
 	if Algo == false {
 		if len(args) > 0 {
@@ -121,12 +127,12 @@ var sha3512Cmd = &cobra.Command{
 var uuid1Cmd = &cobra.Command{
 	Use:   "uuid1",
 	Short: "Generate UUID-1 random string",
-	Run:   hashGenerate,
+	Run:   uuidGenerate,
 }
 var uuid4Cmd = &cobra.Command{
 	Use:   "uuid4",
 	Short: "Generate UUID-4 random string",
-	Run:   hashGenerate,
+	Run:   uuidGenerate,
 }
 var randomCmd = &cobra.Command{
 	Use:   "rand",
