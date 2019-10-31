@@ -47,6 +47,7 @@ Supported are:
 * SHA3-224 hash
 * SHA3-256 hash
 * SHA3-512 hash
+* Tiger hash
 * UUID-1 random string
 * UUID-4 random string
 * Whirlpool hash

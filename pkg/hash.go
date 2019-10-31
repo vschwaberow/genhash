@@ -10,6 +10,7 @@ import (
 	"io"
 	"os"
 
+	"github.com/cxmcc/tiger"
 	"github.com/jzelinskie/whirlpool"
 	"github.com/raja/argon2pw"
 	uuid "github.com/satori/go.uuid"
@@ -76,6 +77,11 @@ func HashPassword(password string) (string, error) {
 		return string(bytes), nil
 	case "sha3-512":
 		bytes := callHashFactory(password, sha3.New512)
+		return string(bytes), nil
+	case "tiger":
+		h := tiger.New()
+		io.WriteString(h, password)
+		bytes := fmt.Sprintf("%x", h.Sum(nil))
 		return string(bytes), nil
 	case "uuid1":
 		u1 := uuid.Must(uuid.NewV1(), nil)

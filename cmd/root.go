@@ -39,6 +39,7 @@ func init() {
 	rootCmd.AddCommand(randomCmd)
 	rootCmd.AddCommand(whirlCmd)
 	rootCmd.AddCommand(argon2Cmd)
+	rootCmd.AddCommand(tigerCmd)
 }
 
 func Execute() {

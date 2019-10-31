@@ -149,3 +149,8 @@ var argon2Cmd = &cobra.Command{
 	Short: "Generate Argon2 hash",
 	Run:   hashGenerate,
 }
+var tigerCmd = &cobra.Command{
+	Use:   "tiger",
+	Short: "Generate Tiger hash",
+	Run:   hashGenerate,
+}
