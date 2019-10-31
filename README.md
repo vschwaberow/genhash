@@ -30,16 +30,23 @@ Or you can provide a list of text strings to be hashed over the stdin
 
 You can list all algorithms over the help function.
 
-Supported hash algorithms are:
+Supported are:
 
-* Lanmanager
-* NTLM / NTHash (UTF16 Little Endian MD4)
-* md4
-* md5 
-* bcrypt
-* ripemd160
-* sha1
-* sha2-224, sha2-256, sha2-512
-* sha3-224, sha3-256, sha3-512
-* UUID Version 1
-* UUID Version 4
+* Argon2 hash
+* Bcrypt hash
+* LanManager hash
+* MD4 hash
+* MD5 hash
+* NTLM hash
+* Generate random bytes of size provided
+* RIPEMD160 hash
+* SHA-1 hash
+* SHA2-224 hash
+* SHA2-256 hash
+* SHA2-512 hash
+* SHA3-224 hash
+* SHA3-256 hash
+* SHA3-512 hash
+* UUID-1 random string
+* UUID-4 random string
+* Whirlpool hash
