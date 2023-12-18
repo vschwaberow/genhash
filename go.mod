@@ -8,5 +8,5 @@ require (
 	github.com/raja/argon2pw v1.0.1
 	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/cobra v0.0.5
-	golang.org/x/crypto v0.1.0
+	golang.org/x/crypto v0.17.0
 )
